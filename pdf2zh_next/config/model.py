@@ -275,7 +275,7 @@ class SettingsModel(BaseModel):
             # so no need to validate other settings
             return
 
-        if not self.translate_engine_settings:
+        if not self.translate_engine_settings and not self.translation.parse_only:
             raise ValueError("Must provide a translation service")
 
         # Log the current translation engine being used
