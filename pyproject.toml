@@ -34,9 +34,6 @@ dependencies = [
     "peewee>=3.17.8",
     "fontTools",
     "babeldoc @ git+https://github.com/zxk2022/BabelDOC.git@9c6a9cffdf590c5325e282c800e1e338f9b039f8",
-
-[tool.hatch.metadata]
-allow-direct-references = true
     "rich",
     "pydantic-settings>=2.8.1",
     "pydantic>=2.10.6",
@@ -166,3 +163,6 @@ max-complexity = 10 # 函数圈复杂度阈值
 "tests/*" = ["S101"]            # 在测试文件中允许 assert
 "**/__init__.py" = ["F401"]     # 允许未使用的导入
 "docs/*" = ["A001"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
