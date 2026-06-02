@@ -278,6 +278,9 @@ class SettingsModel(BaseModel):
         if not self.translate_engine_settings and not self.translation.parse_only:
             raise ValueError("Must provide a translation service")
 
+        if self.translation.parse_only:
+            return
+
         # Log the current translation engine being used
         engine_name = self.translate_engine_settings.translate_engine_type
         log.info(f"Using translation engine: {engine_name}")
