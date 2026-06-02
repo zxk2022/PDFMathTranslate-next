@@ -127,6 +127,14 @@ class TranslationSettings(BaseModel):
         default=None,
         description="Override primary font family for translated text. Choices: 'serif' for serif fonts, 'sans-serif' for sans-serif fonts, 'script' for script/italic fonts. If not specified, uses automatic font selection based on original text properties.",
     )
+    parse_only: bool = Field(
+        default=False,
+        description="Parse-only mode: run stages 0-5 and save IL, skip translation.",
+    )
+    pre_parsed_il: str | None = Field(
+        default=None,
+        description="Path to pre-parsed IL XML file to load instead of parsing.",
+    )
 
 
 class PDFSettings(BaseModel):

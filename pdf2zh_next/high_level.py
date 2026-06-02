@@ -627,6 +627,8 @@ def create_babeldoc_config(settings: SettingsModel, file: Path) -> BabelDOCConfi
         # Term extraction translator (can be different from main translator)
         term_extraction_translator=term_extraction_translator,
         term_pool_max_workers=settings.translation.term_pool_max_workers,
+        parse_only=settings.translation.parse_only,
+        pre_parsed_il=settings.translation.pre_parsed_il,
     )
     return babeldoc_config
 
