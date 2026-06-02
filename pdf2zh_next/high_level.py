@@ -531,6 +531,21 @@ def _get_glossaries(settings: SettingsModel) -> list[Glossary] | None:
 def create_babeldoc_config(settings: SettingsModel, file: Path) -> BabelDOCConfig:
     if not isinstance(settings, SettingsModel):
         raise ValueError(f"{type(settings)} is not SettingsModel")
+
+    if settings.translation.parse_only:
+        return BabelDOCConfig(
+            input_file=file,
+            translator=None,
+            doc_layout_model=None,
+            debug=settings.basic.debug,
+            lang_in=settings.translation.lang_in,
+            lang_out=settings.translation.lang_out,
+            output_dir=settings.translation.output,
+            qps=0,
+            parse_only=True,
+            pre_parsed_il=settings.translation.pre_parsed_il,
+        )
+
     translator = get_translator(settings)
     if translator is None:
         raise ValueError("No translator found")
